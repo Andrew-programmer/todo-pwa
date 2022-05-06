@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script>
+        // Check that service workers are supported
+        if ("serviceWorker" in navigator) {
+            // Use the window load event to keep the page load performant
+
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js");
+            });
+        }
+	</script>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>My Todo</title>
 	<link rel="stylesheet" href="index.css" />
-	<link rel="manifest" href="manifest.webmanifest"/>
-	<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
-	<script>
-        if('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js');
-        };
-	</script>
+	<link rel="manifest" href="manifest.webmanifest">
+	<script src="https://unpkg.com/dexie/dist/dexie.js"></script>
 </head>
-<body>
-	<h1>Todo List</h1>
-	<header>
-		<form id="new-task-from">
-			<input
-					type="text"
-					name="new-task-input"
-					id="new-task-input"
-					placeholder="What do you have planned?"
-			/>
-			<input
-					type="button"
-					id="new-task-submit"
-					value="Add task"
-			/>
-		</form>
-	</header>
-	<main>
-		<section class="task-list">
-			<h2>Tasks</h2>
-			<div id="tasks"></div>
-		</section>
-	</main>
 
-	<script src="index.js"></script>
+<body>
+<header>
+	<h1>Todo PWA</h1>
+	<form id="new-task-form">
+		<input type="text" name="new-task-input" id="new-task-input" placeholder="What do you have planned?" />
+		<input type="submit" id="new-task-submit" value="Add task" />
+	</form>
+</header>
+<main>
+	<section class="task-list">
+		<h2>Tasks</h2>
+		<div id="tasks">
+		</div>
+	</section>
+</main>
+
+<script src="index.js"></script>
 </body>
+
 </html>
