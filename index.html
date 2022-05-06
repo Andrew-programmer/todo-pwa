@@ -6,14 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>My Todo</title>
 	<link rel="stylesheet" href="index.css" />
-	<link rel="manifest" href="manifest.json"/>
+	<link rel="manifest" href="manifest.webmanifest"/>
 	<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
 	<script>
-        if ("serviceWorker" in navigator) {git
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("./sw.js");
-            });
-        }
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js');
+        };
 	</script>
 </head>
 <body>
